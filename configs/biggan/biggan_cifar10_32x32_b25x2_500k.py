@@ -24,7 +24,7 @@ custom_hooks = [
         priority='VERY_HIGH')
 ]
 
-total_iters = 500000
+total_iters = 125000 #500000
 
 # use ddp wrapper for faster training
 use_ddp_wrapper = True
@@ -39,7 +39,7 @@ runner = dict(
 inception_pkl = None
 evaluation = dict(
     type='GenerativeEvalHook',
-    interval=10000,
+    interval=5000, #10000
     metrics=[
         dict(
             type='FID',
