@@ -39,14 +39,14 @@ runner = dict(
 inception_pkl = 'work_dir/cifar10.pkl'
 evaluation = dict(
     type='GenerativeEvalHook',
-    interval=5000, #10000
+    interval=50, #10000
     metrics=[
         dict(
             type='FID',
-            num_images=50000,
+            num_images=500,
             inception_pkl=inception_pkl,
             bgr2rgb=True),
-        dict(type='IS', num_images=50000)
+        dict(type='IS', num_images=500)
     ],
     sample_kwargs=dict(sample_model='ema'),
     best_metric=['fid', 'is'])
@@ -54,7 +54,7 @@ evaluation = dict(
 metrics = dict(
     fid50k=dict(
         type='FID',
-        num_images=50000,
+        num_images=50,
         inception_pkl=inception_pkl,
         bgr2rgb=True),
-    is50k=dict(type='IS', num_images=50000))
+    is50k=dict(type='IS', num_images=500))
