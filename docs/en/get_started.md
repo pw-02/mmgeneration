@@ -15,7 +15,7 @@ If you are experienced with PyTorch and have already installed it, just skip thi
 On GPU platforms:
 
 ```shell
-conda create -name openmmlab python=3.8 -y
+conda create --name openmmlab python=3.8 -y
 conda activate openmmlab
 ```
 

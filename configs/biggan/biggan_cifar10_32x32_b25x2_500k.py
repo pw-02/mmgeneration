@@ -36,7 +36,7 @@ runner = dict(
     pass_training_status=True)
 
 # Note set your inception_pkl's path
-inception_pkl = None
+inception_pkl = 'work_dir/cifar10.pkl'
 evaluation = dict(
     type='GenerativeEvalHook',
     interval=5000, #10000
