@@ -26,7 +26,9 @@ cv2.setNumThreads(0)
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Train a GAN model')
-    parser.add_argument('--config', help='train config file path', default='configs/biggan/biggan_cifar10_32x32_b25x2_500k.py')
+    parser.add_argument('--config', help='train config file path', default='configs/biggan/biggan_torch-sn_tinyimagenet_128x128_b32x8_1500k.py')
+
+    # parser.add_argument('--config', help='train config file path', default='configs/biggan/biggan_cifar10_32x32_b25x2_500k.py')
     parser.add_argument('--work-dir', help='the dir to save logs and models', default='logs')
     parser.add_argument(
         '--resume-from', help='the checkpoint file to resume from')

@@ -1,6 +1,22 @@
+def get_classses(directory_path):
+    import os
+
+    # Get a list of all items in the directory
+    all_items = os.listdir(directory_path)
+
+    # Filter to include only directories (folders), excluding files
+    folder_names = [item for item in all_items if os.path.isdir(os.path.join(directory_path, item))]
+
+    # print("Folder Names:", folder_names)
+
+    return folder_names
+
+
+
+
 # dataset settings
 dataset_type = 'mmcls.ImageNet'
-
+#dataset_type = 'mmcls.CustomDataset'
 # different from mmcls, we adopt the setting used in BigGAN.
 # Importantly, the `to_rgb` is set to `False` to remain image orders as BGR.
 # Remove `RandomFlip` augmentation and change `RandomCropLongEdge` to
@@ -30,17 +46,21 @@ data = dict(
     samples_per_gpu=None,
     workers_per_gpu=2,
     train=dict(
+        classes = get_classses('data/imagenet/train'),
         type=dataset_type,
         data_prefix='data/imagenet/train',
         pipeline=train_pipeline),
     val=dict(
         type=dataset_type,
+        classes = get_classses('data/imagenet/val'),
         data_prefix='data/imagenet/val',
-        ann_file='data/imagenet/meta/val.txt',
+        # ann_file='data/imagenet/val/val_annotations.txt',
         pipeline=test_pipeline),
     test=dict(
         # replace `data/val` with `data/test` for standard test
         type=dataset_type,
+        classes = get_classses('data/imagenet/val'),
         data_prefix='data/imagenet/val',
-        ann_file='data/imagenet/meta/val.txt',
-        pipeline=test_pipeline))
+        # ann_file='data/imagenet/val/val_annotations.txt',
+        pipeline=test_pipeline)
+        )
