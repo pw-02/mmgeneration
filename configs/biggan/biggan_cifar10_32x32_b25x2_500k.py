@@ -24,7 +24,7 @@ custom_hooks = [
         priority='VERY_HIGH')
 ]
 
-total_iters = 1500000 #500000
+total_iters = 50000 #500000
 
 # use ddp wrapper for faster training
 use_ddp_wrapper = True
