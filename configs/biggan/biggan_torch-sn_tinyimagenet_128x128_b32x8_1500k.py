@@ -17,18 +17,18 @@ custom_hooks = [
     dict(
         type='VisualizeUnconditionalSamples',
         output_dir='training_samples',
-        interval=10000),
+        interval=5000),
     dict(
         type='ExponentialMovingAverageHook',
         module_keys=('generator_ema', ),
-        interval=8,
-        start_iter=160000,
+        interval=4,
+        start_iter=4000,
         interp_cfg=dict(momentum=0.9999, momentum_nontrainable=0.9999),
         priority='VERY_HIGH')
 ]
 
 # Traning sets' datasize 1,281,167
-total_iters = 1500000
+total_iters = 5000
 
 # use ddp wrapper for faster training
 use_ddp_wrapper = True
@@ -43,7 +43,7 @@ runner = dict(
 inception_pkl = 'work_dir/imagenet.pkl'
 evaluation = dict(
     type='GenerativeEvalHook',
-    interval=10000,
+    interval=5000,
     metrics=[
         dict(
             type='FID',

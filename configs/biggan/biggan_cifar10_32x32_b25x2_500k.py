@@ -5,11 +5,11 @@ _base_ = [
 
 # define dataset
 # you must set `samples_per_gpu`
-data = dict(samples_per_gpu=25, workers_per_gpu=8)
+data = dict(samples_per_gpu=32, workers_per_gpu=8)
 
 # adjust running config
 lr_config = None
-checkpoint_config = dict(interval=5000, by_epoch=False, max_keep_ckpts=20)
+checkpoint_config = dict(interval=5000, by_epoch=False, max_keep_ckpts=10)
 custom_hooks = [
     dict(
         type='VisualizeUnconditionalSamples',
@@ -24,7 +24,7 @@ custom_hooks = [
         priority='VERY_HIGH')
 ]
 
-total_iters = 125000 #500000
+total_iters = 1500000 #500000
 
 # use ddp wrapper for faster training
 use_ddp_wrapper = True
