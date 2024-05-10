@@ -28,7 +28,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description='Train a GAN model')
     # parser.add_argument('--config', help='train config file path', default='configs/biggan/biggan_r_ada_fp16_gamma3.3_metfaces_1024_b4x8.py')
     parser.add_argument('--config', help='train config file path', default='configs/biggan/biggan_cifar10_32x32_b25x2_500k.py')
-    parser.add_argument('--work-dir', help='the dir to save logs and models', default='logs')
+    parser.add_argument('--work-dir', help='the dir to save logs and models', default='logs_cifar10')
     parser.add_argument(
         '--resume-from', help='the checkpoint file to resume from')
     parser.add_argument(
