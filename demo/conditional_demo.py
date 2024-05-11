@@ -8,7 +8,8 @@ from mmcv import DictAction
 from torchvision import utils
 
 # yapf: disable
-sys.path.append(os.path.abspath(os.path.join(__file__, '../..')))  # isort:skip  # noqa
+sys.path.append(os.path.abspath(os.path.join(__file__, '..\..')))  # isort:skip  # noqa
+
 
 from mmgen.apis import init_model, sample_conditional_model  # isort:skip  # noqa
 # yapf: enable
@@ -16,12 +17,12 @@ from mmgen.apis import init_model, sample_conditional_model  # isort:skip  # noq
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Generation demo')
-    parser.add_argument('config', help='test config file path')
-    parser.add_argument('checkpoint', help='checkpoint file')
+    parser.add_argument('--config', help='test config file path', default='configs/biggan/biggan_cifar10_32x32_b25x2_500k.py')
+    parser.add_argument('--checkpoint', help='checkpoint file', default='iter_5000.pth')
     parser.add_argument(
         '--save-path',
         type=str,
-        default='./work_dirs/demos/conditional_samples.png',
+        default='demo_output/conditional_samples.png',
         help='path to save unconditional samples')
     parser.add_argument(
         '--device', type=str, default='cuda:0', help='CUDA device id')
@@ -39,6 +40,7 @@ def parse_args():
               'be regard as the total number of the images to sample.'))
     parser.add_argument(
         '--label',
+        default=None,
         type=int,
         nargs='+',
         help=('Labels want to sample. If not defined, '

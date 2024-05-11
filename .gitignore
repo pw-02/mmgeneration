@@ -126,3 +126,4 @@ runs/
 
 # Pytorch Server
 *.mar
+logs_cifar10/biggan_cifar10_32x32_b25x2_500k.py

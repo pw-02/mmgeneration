@@ -16,12 +16,12 @@ from mmgen.apis import init_model, sample_unconditional_model  # isort:skip  # n
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Generation demo')
-    parser.add_argument('config', help='test config file path')
-    parser.add_argument('checkpoint', help='checkpoint file')
+    parser.add_argument('--config', help='test config file path', default='configs/biggan/biggan_cifar10_32x32_b25x2_500k.py')
+    parser.add_argument('--checkpoint', help='checkpoint file', default='iter_5000.pth')
     parser.add_argument(
         '--save-path',
         type=str,
-        default='./work_dirs/demos/unconditional_samples.png',
+        default='demo_output/unconditional_sample5.png',
         help='path to save unconditional samples')
     parser.add_argument(
         '--device', type=str, default='cuda:0', help='CUDA device id')
@@ -32,7 +32,7 @@ def parse_args():
     parser.add_argument(
         '--num-samples',
         type=int,
-        default=12,
+        default=1,
         help='The total number of samples')
     parser.add_argument(
         '--sample-model',
@@ -51,7 +51,7 @@ def parse_args():
     parser.add_argument(
         '--nrow',
         type=int,
-        default=6,
+        default=1,
         help='Number of images displayed in each row of the grid')
 
     args = parser.parse_args()

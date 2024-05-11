@@ -5,7 +5,7 @@ _base_ = [
 
 # define dataset
 # you must set `samples_per_gpu`
-data = dict(samples_per_gpu=2, workers_per_gpu=1)
+data = dict(samples_per_gpu=32, workers_per_gpu=1)
 
 model = dict(
     generator=dict(sn_style='torch'), discriminator=dict(sn_style='torch'))
@@ -28,7 +28,7 @@ custom_hooks = [
 ]
 
 # Traning sets' datasize 1,281,167
-total_iters = 5000
+total_iters = 46875
 
 # use ddp wrapper for faster training
 use_ddp_wrapper = True
